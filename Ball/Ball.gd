@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 500
+var speed = 600
 # outside physics process
 # effectively global scope, which is why it is not in a function
 var velocity = Vector2.ZERO
@@ -21,3 +21,14 @@ func _physics_process(delta):
 	if  collsion_object:
 		velocity = velocity.bounce(collsion_object.normal)
 		
+func stop_ball():
+	speed = 0
+
+func restart_ball():
+	# reset speed
+	speed = 600
+	# also restart velocity and rng
+		# horizontal speed
+	velocity.x = [-1,1][randi() % 2] # randi == random integer; in this case a 0 or 1
+	# vertical speed
+	velocity.y = [-0.8,0.8][randi() % 2] # randi == random integer; in this case a 0 or 1
