@@ -25,13 +25,16 @@ func _on_Right_body_entered(body):
 	PlayerScore += 1
 	
 func _process(delta): # just setting some text
+	
 	$PlayerScore.text = str(PlayerScore) # attributes listed at right on 2d view
 	$OpponentScore.text = str(OpponentScore) # attributes listed at right on 2d view
+	$CountDownLabel.text = str(int($CountDownTimer.time_left ) + 1)
 
 
 
 func _on_CountDownTimer_timeout():
 	get_tree().call_group('BallGroup', 'restart_ball')
+	$CountDownLabel.visible = false
 
 
 func score_achieved():
@@ -39,3 +42,5 @@ func score_achieved():
 	
 	get_tree().call_group('BallGroup', 'stop_ball')
 	$CountDownTimer.start()	
+	$CountDownLabel.visible = true
+	
