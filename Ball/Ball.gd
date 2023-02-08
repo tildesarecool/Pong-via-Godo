@@ -20,6 +20,7 @@ func _physics_process(delta):
 	var collsion_object = move_and_collide(velocity * speed * delta) # return collison value
 	if  collsion_object:
 		velocity = velocity.bounce(collsion_object.normal)
+		$CollisionSound.play()
 		
 func stop_ball():
 	speed = 0

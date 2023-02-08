@@ -43,4 +43,8 @@ func score_achieved():
 	get_tree().call_group('BallGroup', 'stop_ball')
 	$CountDownTimer.start()	
 	$CountDownLabel.visible = true
-	
+	# sound at score time
+	$ScoreSound.play()
+	# setting position of players
+	$Player.position.x = 35 # pixels from left sid eof screen
+	$Opponent.position.x = 1280 - 35 # pixels from left sid eof screen
